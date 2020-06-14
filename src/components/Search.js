@@ -14,7 +14,7 @@ class Search extends Component {
 
     search = (query) => {
         return BooksAPI.search(query)
-        .then(books => books)
+        .then(books => Array.isArray(books) ? books : [])
     }
 
 
@@ -29,6 +29,11 @@ class Search extends Component {
             this.setState({books: []})
     }
 
+    checkBooks = (books) => {
+        
+        return books = Array.isArray(books) ? books : []
+
+    }
  
 
 
