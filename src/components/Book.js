@@ -6,15 +6,16 @@ class Book extends Component {
     onChangeShelf  = (value) => {
         this.props.changeShelf(this.props.book, value)
     }
-    // getCurrentShelf = () => {
-    //     let currentShelf = this.props.bookStatus ? this.props.bookStatus : this.props.book.shelf
-    //     return currentShelf
-    // }
+    getCurrentShelf = () => {
+
+        let currentShelf = this.props.book.shelf
+        currentShelf = typeof (this.props.book.shelf) === "undefined" ? "none" : this.props.book.shelf 
+        console.log(currentShelf)
+        return currentShelf
+    }
 
     render() {
 
-        // let {book} = this.props.book
-        console.log(this.props.book)
         return(
 
             <div className="book">
@@ -31,7 +32,7 @@ class Book extends Component {
                     
                     <div className="book-shelf-changer">
                         
-                        <select onChange= {(event) => this.onChangeShelf(event.target.value)} value = {this.props.book.shelf} >
+                        <select onChange= {(event) => this.onChangeShelf(event.target.value)} value = {this.getCurrentShelf()} >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
