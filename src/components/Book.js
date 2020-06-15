@@ -6,6 +6,10 @@ class Book extends Component {
     onChangeShelf  = (value) => {
         this.props.changeShelf(this.props.book, value)
     }
+    // getCurrentShelf = () => {
+    //     let currentShelf = this.props.bookStatus ? this.props.bookStatus : this.props.book.shelf
+    //     return currentShelf
+    // }
 
     render() {
 
@@ -19,11 +23,14 @@ class Book extends Component {
                         className="book-cover" 
                         style={{ width: 128, height: 193,
                                  backgroundSize: '100% 100%',
-                                 backgroundImage: this.props.book.imageLinks  ?  'url(' + this.props.book.imageLinks.smallThumbnail + ')' : 'none'
+                                 backgroundImage: this.props.book.imageLinks  ? 
+                                 'url(' + this.props.book.imageLinks.smallThumbnail + ')' :
+                                 'none'
                               }}
                     ></div>
                     
                     <div className="book-shelf-changer">
+                        
                         <select onChange= {(event) => this.onChangeShelf(event.target.value)} value = {this.props.book.shelf} >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>

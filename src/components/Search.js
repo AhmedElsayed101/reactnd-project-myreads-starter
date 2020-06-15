@@ -14,7 +14,9 @@ class Search extends Component {
 
     search = (query) => {
         return BooksAPI.search(query)
+        // .then(books => books = books.map((book) => (book.shelf = 'none')))
         .then(books => Array.isArray(books) ? books : [])
+        // .then(books => console.log(books))
     }
 
 
@@ -22,6 +24,7 @@ class Search extends Component {
         this.setState(() => ({
             query : query,    
         }))
+        console.log(this.state.books)
         if(query.length) 
             this.search(query)
             .then(books => this.setState({books: books}))
@@ -29,11 +32,11 @@ class Search extends Component {
             this.setState({books: []})
     }
 
-    checkBooks = (books) => {
+    // checkBooks = (books) => {
         
-        return books = Array.isArray(books) ? books : []
+    //     return books = Array.isArray(books) ? books : []
 
-    }
+    // }
  
 
 
